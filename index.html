@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body>
+
+
+    <div id='map' style='width: 800px; height: 700px;'></div>
+    <script>
+        navigator.geolocation.getCurrentPosition((position) => {
+
+            var locations = [
+                // main building.
+                [84.946857, 56.469514],
+                // Dormitory.
+                [84.937063, 56.470572]
+            ]
+
+            // Token.
+            mapboxgl.accessToken = 'pk.eyJ1IjoicmVkb3VhbmU2NCIsImEiOiJja2I0M285dnkwYnk0MnptaXJwY2I5NWtrIn0.npkqRiIUYmpgoc51LEXnLg';
+
+            // Create map object.
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [84.948601, 56.469481],
+                zoom: 13
+
+            });
+
+            // Display user location.
+            var user = new mapboxgl.Marker()
+                .setLngLat([position.coords.longitude, position.coords.latitude])
+                .setPopup(new mapboxgl.Popup().setHTML("<h1>Hello World!</h1>")) 
+                .addTo(map);
+
+            locations.forEach(element => {
+                new mapboxgl.Marker({ color: "#ff0000" })
+                    .setLngLat(element)
+                    .addTo(map);
+            });
+        });
+    </script>
+</body>
+
+</html>
