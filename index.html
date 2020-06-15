@@ -16,12 +16,6 @@
     <script>
         navigator.geolocation.getCurrentPosition((position) => {
 
-            var locations = [
-                // main building.
-                [84.946857, 56.469514],
-                // Dormitory.
-                [84.937063, 56.470572]
-            ]
 
             // Token.
             mapboxgl.accessToken = 'pk.eyJ1IjoicmVkb3VhbmU2NCIsImEiOiJja2I0M285dnkwYnk0MnptaXJwY2I5NWtrIn0.npkqRiIUYmpgoc51LEXnLg';
@@ -36,18 +30,29 @@
             });
 
             // Display user location.
-            var user = new mapboxgl.Marker()
+            var user = new mapboxgl.Marker({ color: "#00ff00" })
                 .setLngLat([position.coords.longitude, position.coords.latitude])
                 .setPopup(new mapboxgl
-                    .Popup()
-                    .setHTML("<h3>You</h3>")) 
+                    .Popup({ closeOnMove: true })
+                    .setHTML("<h3>You</h3>"))
                 .addTo(map);
 
-            locations.forEach(element => {
-                new mapboxgl.Marker({ color: "#ff0000" })
-                    .setLngLat(element)
-                    .addTo(map);
-            });
+            fetch("https://raw.githubusercontent.com/Redouane64/map-app/master/locations.json")
+                .then(
+                    resp => resp.json()
+                        .then(data =>
+                            data.forEach(element => {
+                                element.location.forEach(location => {
+                                    new mapboxgl.Marker({ color: "#ff0000" })
+                                        .setPopup(new mapboxgl
+                                            .Popup({ closeOnMove: true })
+                                            .setHTML(`<h3>${location.name}</h3>`))
+                                        .setLngLat(location.position)
+                                        .addTo(map);
+                                })
+                            })
+                        )
+                );
         });
     </script>
 </body>
