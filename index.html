@@ -38,7 +38,9 @@
             // Display user location.
             var user = new mapboxgl.Marker()
                 .setLngLat([position.coords.longitude, position.coords.latitude])
-                .setPopup(new mapboxgl.Popup().setHTML("<h1>Hello World!</h1>")) 
+                .setPopup(new mapboxgl
+                    .Popup()
+                    .setHTML("<h3>You</h3>")) 
                 .addTo(map);
 
             locations.forEach(element => {
