@@ -1,6 +1,7 @@
 [
     {
         "catagory": "default",
+        "color": "#ff0000",
         "location": [
             {
                 "name": "Main Building",

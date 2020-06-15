@@ -37,6 +37,19 @@
                     .setHTML("<h3>You</h3>"))
                 .addTo(map);
 
+            /*
+             * - Type of locations:
+             * - Corpus (....)
+             * - Museums (in main building)
+             * - Status (in front main building...)
+             * - Bank/ATM (...)
+             * - Sport (stadium, sking, skating, sport building)
+             * - Dormitories (...)
+             * - Restaurants (...)
+             * - Library (...)
+             * - Stores (...)
+            */
+            // fetch locations and show them in the map.
             fetch("https://raw.githubusercontent.com/Redouane64/map-app/master/locations.json")
                 .then(
                     resp => resp.json()
