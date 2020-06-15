@@ -1,10 +1,15 @@
 [
     {
-        "name": "Main Building",
-        "position": [84.946857, 56.469514]
-    },
-    {
-        "name": "Dormitory",
-        "position": [84.937063, 56.470572]
+        "catagory": "default",
+        "location": [
+            {
+                "name": "Main Building",
+                "position": [84.946857, 56.469514]
+            },
+            {
+                "name": "Dormitory",
+                "position": [84.937063, 56.470572]
+            }
+        ]
     }
 ]
