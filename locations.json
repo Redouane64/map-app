@@ -6,10 +6,36 @@
             {
                 "name": "Main Building",
                 "position": [84.946857, 56.469514]
-            },
+            }
+        ]
+    },
+    {
+        "catagory": "dormitory",
+        "color": "#00ff00",
+        "location": [
             {
-                "name": "Dormitory",
+                "name": "Parus Dormitory",
                 "position": [84.937063, 56.470572]
+            }
+        ]
+    },
+    {
+        "catagory": "sport",
+        "color": "#00ff00",
+        "location": [
+            {
+                "name": "Stadium",
+                "position": [84.935796, 56.462197]
+            }
+        ]
+    },
+    {
+        "catagory": "store",
+        "color": "#00f",
+        "location": [
+            {
+                "name":"Store",
+                "position": [84.939167, 56.470622]
             }
         ]
     }
