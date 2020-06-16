@@ -21,11 +21,11 @@
         <div class="sidebar-heading">Campus Map</div>
         <div class="list-group list-group-flush">
           <a href="#" onclick="togglePin('user')" class="list-group-item list-group-item-action bg-light">My location</a>
-          <a href="#" onclick="togglePin('cat1')" class="list-group-item list-group-item-action bg-light">Category 1</a>
-          <a href="#" onclick="togglePin('cat2')" class="list-group-item list-group-item-action bg-light">Category 2</a>
-          <a href="#" onclick="togglePin('cat3')" class="list-group-item list-group-item-action bg-light">Category 3</a>
-          <a href="#" onclick="togglePin('cat4')" class="list-group-item list-group-item-action bg-light">Category 4</a>
-          <a href="#" onclick="togglePin('cat5')" class="list-group-item list-group-item-action bg-light">Category 5</a>
+          <a href="#" onclick="togglePin('default')" class="list-group-item list-group-item-action bg-light">Corpus</a>
+          <a href="#" onclick="togglePin('sport')" class="list-group-item list-group-item-action bg-light">Sports</a>
+          <a href="#" onclick="togglePin('dormitory')" class="list-group-item list-group-item-action bg-light">Dormitories</a>
+          <a href="#" onclick="togglePin('restaurant')" class="list-group-item list-group-item-action bg-light">Restaurants</a>
+          <a href="#" onclick="togglePin('store')" class="list-group-item list-group-item-action bg-light">Stores</a>
         </div>
       </div>
     <div class="div-push"></div>
@@ -64,7 +64,7 @@
             var elUser = document.createElement('div');
             elUser.className = 'user-marker';
             
-            var user = new mapboxgl.Marker(elUser, { color: "#00ff00" })
+            var user = new mapboxgl.Marker(elUser)
                 .setLngLat([position.coords.longitude, position.coords.latitude])
                 .setPopup(new mapboxgl
                     .Popup({ closeOnMove: true })
@@ -90,7 +90,10 @@
                         .then(data =>
                             data.forEach(element => {
                                 element.location.forEach(location => {
-                                    new mapboxgl.Marker({ color: "#ff0000" })
+                                    var elCat = document.createElement('div');
+                                    elCat.className = `${element.catagory}-marker`;
+
+                                    new mapboxgl.Marker(elCat)
                                         .setPopup(new mapboxgl
                                             .Popup({ closeOnMove: true })
                                             .setHTML(`<h3>${location.name}</h3>`))
