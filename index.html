@@ -4,16 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Campus Map</title>
+    <link rel="stylesheet" href="site.css">
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
+
+
 <body>
+  <div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Campus Map</div>
+        <div class="list-group list-group-flush">
+          <a href="#" onclick="togglePin('user')" class="list-group-item list-group-item-action bg-light">My location</a>
+          <a href="#" onclick="togglePin('cat1')" class="list-group-item list-group-item-action bg-light">Category 1</a>
+          <a href="#" onclick="togglePin('cat2')" class="list-group-item list-group-item-action bg-light">Category 2</a>
+          <a href="#" onclick="togglePin('cat3')" class="list-group-item list-group-item-action bg-light">Category 3</a>
+          <a href="#" onclick="togglePin('cat4')" class="list-group-item list-group-item-action bg-light">Category 4</a>
+          <a href="#" onclick="togglePin('cat5')" class="list-group-item list-group-item-action bg-light">Category 5</a>
+        </div>
+      </div>
+    <div class="div-push"></div>
+      <!-- /#sidebar-wrapper -->
+  
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        </nav>
+  
+        <div id='map' style='width: 100%; height: 100%;'></div>
+      </div>
+      <!-- /#page-content-wrapper -->
+  
+    </div>
+    <!-- /#wrapper -->
 
-
-    <div id='map' style='width: 800px; height: 700px;'></div>
-    <script>
+  <script>
         navigator.geolocation.getCurrentPosition((position) => {
 
 
@@ -30,7 +60,11 @@
             });
 
             // Display user location.
-            var user = new mapboxgl.Marker({ color: "#00ff00" })
+
+            var elUser = document.createElement('div');
+            elUser.className = 'user-marker';
+            
+            var user = new mapboxgl.Marker(elUser, { color: "#00ff00" })
                 .setLngLat([position.coords.longitude, position.coords.latitude])
                 .setPopup(new mapboxgl
                     .Popup({ closeOnMove: true })
@@ -67,6 +101,21 @@
                         )
                 );
         });
+    </script>
+
+    <script>
+      function togglePin(category) {
+        let markers = document.getElementsByClassName(`${category}-marker`);
+
+        for (let i = 0; i < markers.length; i++) {
+          if (markers[i].style.visibility == "hidden") {
+            markers[i].style.visibility = "visible";
+          }
+          else {
+            markers[i].style.visibility = "hidden";
+          }
+        }
+      }
     </script>
 </body>
 
