@@ -8,9 +8,71 @@
                 "position": [84.946857, 56.469514]
             },
             {
-                "name": "Aprikos",
-                "position": [84.940951, 56.471575]
+                "name":"Building No.4",
+                "position": [84.942681, 56.470259]
+            },
+            {
+                "name": "Cultural Center",
+                "position": [84.9466616, 56.4695245]
+            },
+            {
+                "name": "Building No.2",
+                "position": [84.9452410, 56.4686092]
+            },
+            {
+                "name": "Research institute of mathematics and mechanics",
+                "position": [84.9439498, 56.4691331]
+            },
+            {
+                "name": "Research institute of biology and biophysics",
+                "position": [84.9440937, 56.4702510]
+            },
+            {
+                "name": "Utility area",
+                "position": [84.945259, 56.470930]
+            },
+            {
+                "name": "Deans office, faculty of innovative technologies",
+                "position": [84.944042, 56.469078]
+            },
+            {
+                "name": "Siberian botanical garden",
+                "position": [84.946611, 56.466690]
+            },
+            {
+                "name": "Research library",
+                "position": [84.950127, 56.467962]
+            },
+            {
+                "name": "Building No.3",
+                "position": [84.950132, 56.467595]
+            },
+            {
+                "name": "Health and Recreation Center"
+                "position": [84.951263, 56.468067]
+            },
+            {
+                "name": "Building No.12",
+                "position": [84.951110, 56.472018]
+            },
+            {
+                "name": "Siberian Physical-Technical institute,Main building",
+                "position": [84.951425, 56.472543]                
+            },
+            {
+                "name": "Building No.6",
+                "position": [84.935368, 56.464216]                
+            },
+            {
+                "name": "TSU Day-care No.49",
+                "position": [85.009660, 56.473288]
+            },
+            {
+                "name": "Military Training Department",
+                "position": [84.970457, 56.449720]
             }
+            
+            
         ]
     },
     {
@@ -20,7 +82,33 @@
             {
                 "name": "Parus Dormitory",
                 "position": [84.937063, 56.470572]
+            },
+            {
+                "name": "Residence Hall No.6",
+                "position": [84.953035, 56.469219]
+            },
+            {
+                "name": "Residence Hall No.8",
+                "position": [84.972187, 56.451686]
+            },
+            {
+                "name": "Residence Hall No.7",
+                "position": [84.972050, 56.452451]
+            },
+            {
+                "name": "Residence Hall No.3",
+                "position": [84.973562, 56.451760]
+            },
+            {
+                "name": "Residence Hall No.2",
+                "position": [84.953170, 56.466970]
+            },
+            {
+                "name": "Residence Hall No.1",
+                "position": [84.955092, 56.478000]
             }
+            
+            
         ]
     },
     {
@@ -30,6 +118,14 @@
             {
                 "name": "Stadium",
                 "position": [84.935796, 56.462197]
+            },
+            {
+                "name": "Sport center, swimming pool",
+                "position":[84.946394, 56.468118]
+            },
+            {
+                "name": "Sport center Athiete",
+                "position": [84.954635, 56.478640]
             }
         ]
     },
@@ -40,6 +136,10 @@
             {
                 "name":"Store",
                 "position": [84.939167, 56.470622]
+            },
+            {
+                "name": "Aprikos",
+                "position": [84.940951, 56.471575]
             }
         ]
     }
