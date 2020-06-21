@@ -13,19 +13,41 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
-
-
 <body>
   <div class="d-flex" id="wrapper">
     <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading">Campus Map</div>
         <div class="list-group list-group-flush">
-          <a href="#" onclick="togglePin('user')" class="list-group-item list-group-item-action bg-light">My location</a>
-          <a href="#" onclick="togglePin('cat1')" class="list-group-item list-group-item-action bg-light">Category 1</a>
-          <a href="#" onclick="togglePin('cat2')" class="list-group-item list-group-item-action bg-light">Category 2</a>
-          <a href="#" onclick="togglePin('cat3')" class="list-group-item list-group-item-action bg-light">Category 3</a>
-          <a href="#" onclick="togglePin('cat4')" class="list-group-item list-group-item-action bg-light">Category 4</a>
-          <a href="#" onclick="togglePin('cat5')" class="list-group-item list-group-item-action bg-light">Category 5</a>
+          <a href="#" onclick="togglePin('user')" class="list-group-item list-group-item-action bg-light"> 
+            <svg width="40" height="10">
+              <rect width="30" height="10" class="user" />
+            </svg> My location
+          </a>
+          <a href="#" onclick="togglePin('default')" class="list-group-item list-group-item-action bg-light">
+            <svg width="40" height="10">
+              <rect width="30" height="10" class="default" />
+            </svg> Corpus
+          </a>
+          <a href="#" onclick="togglePin('sport')" class="list-group-item list-group-item-action bg-light">
+            <svg width="40" height="10">
+              <rect width="30" height="10" class="sport" />
+            </svg> Sports
+          </a>
+          <a href="#" onclick="togglePin('dormitory')" class="list-group-item list-group-item-action bg-light">
+            <svg width="40" height="10">
+              <rect width="30" height="10" class="dormitory" />
+            </svg> Dormitories
+          </a>
+          <a href="#" onclick="togglePin('restaurant')" class="list-group-item list-group-item-action bg-light">
+            <svg width="40" height="10">
+              <rect width="30" height="10" class="restaurant" />
+            </svg> Restaurants
+          </a>
+          <a href="#" onclick="togglePin('store')" class="list-group-item list-group-item-action bg-light">
+            <svg width="40" height="10">
+              <rect width="30" height="10" class="store" />
+            </svg> Stores
+          </a>
         </div>
       </div>
     <div class="div-push"></div>
@@ -34,6 +56,7 @@
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <input type="text" placeholder="Search for locations.." onkeyup="filterLocations()" id="mySearch">
         </nav>
   
         <div id='map' style='width: 100%; height: 100%;'></div>
@@ -62,9 +85,9 @@
             // Display user location.
 
             var elUser = document.createElement('div');
-            elUser.className = 'user-marker';
+            elUser.className = 'user marker';
             
-            var user = new mapboxgl.Marker(elUser, { color: "#00ff00" })
+            var user = new mapboxgl.Marker(elUser)
                 .setLngLat([position.coords.longitude, position.coords.latitude])
                 .setPopup(new mapboxgl
                     .Popup({ closeOnMove: true })
@@ -90,7 +113,10 @@
                         .then(data =>
                             data.forEach(element => {
                                 element.location.forEach(location => {
-                                    new mapboxgl.Marker({ color: "#ff0000" })
+                                    var elCat = document.createElement('div');
+                                    elCat.className = `${element.catagory} marker`;
+
+                                    new mapboxgl.Marker(elCat)
                                         .setPopup(new mapboxgl
                                             .Popup({ closeOnMove: true })
                                             .setHTML(`<h3>${location.name}</h3>`))
@@ -105,10 +131,31 @@
 
     <script>
       function togglePin(category) {
-        let markers = document.getElementsByClassName(`${category}-marker`);
+        let markers = document.getElementsByClassName(`${category} marker`);
 
         for (let i = 0; i < markers.length; i++) {
           if (markers[i].style.visibility == "hidden") {
+            markers[i].style.visibility = "visible";
+          }
+          else {
+            markers[i].style.visibility = "hidden";
+          }
+        }
+      }
+
+      function filterLocations() {
+        var textVal, filter, popup, h;
+        var search = document.getElementById('mySearch');
+        let markers = document.getElementsByClassName('marker');
+
+        filter = search.value.toUpperCase();
+
+        for (let i = 0; i < markers.length; i++) {
+          // Get Marker's Popup -- popup
+          // Get Popup's <h3> element content -- h
+          //textVal = h.textContent || h.innerText;
+          
+          if (txtVal.toUpperCase().indexOf(filter) > -1) {
             markers[i].style.visibility = "visible";
           }
           else {
