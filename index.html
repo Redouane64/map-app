@@ -86,6 +86,7 @@
 
             var elUser = document.createElement('div');
             elUser.className = 'user marker';
+            elUser.title = 'my location';
             
             var user = new mapboxgl.Marker(elUser)
                 .setLngLat([position.coords.longitude, position.coords.latitude])
@@ -115,6 +116,8 @@
                                 element.location.forEach(location => {
                                     var elCat = document.createElement('div');
                                     elCat.className = `${element.catagory} marker`;
+                                    elCat.title = `${location.name} marker`;
+                                    
                                     new mapboxgl.Marker(elCat)
                                         .setPopup(new mapboxgl
                                             .Popup({ closeOnMove: true })
@@ -150,11 +153,9 @@
         filter = search.value.toUpperCase();
 
         for (let i = 0; i < markers.length; i++) {
-          // Get Marker's Popup -- popup
-          // Get Popup's <h3> element content -- h
-          //textVal = h.textContent || h.innerText;
+          textVal = markers[i].title;
           
-          if (txtVal.toUpperCase().indexOf(filter) > -1) {
+          if (textVal.toUpperCase().indexOf(filter) > -1) {
             markers[i].style.visibility = "visible";
           }
           else {
